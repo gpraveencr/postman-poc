@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "2bd5bc9a-b3fc-4c67-93cb-a0b03d163229",
+		"name": "Agify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Predict Age by Name",
+			"_postman_id": "2ba07b2c-86f5-4a53-a173-c7a2afe303e2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.agify.io/?name=guru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"agify",
+						"io"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "guru"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
