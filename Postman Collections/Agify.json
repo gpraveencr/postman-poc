@@ -6,8 +6,8 @@
 	},
 	"item": [
 		{
-			"name": "Predict Age by Name",
-			"_postman_id": "2ba07b2c-86f5-4a53-a173-c7a2afe303e2",
+			"name": "Guess Age by Name",
+			"id": "2ba07b2c-86f5-4a53-a173-c7a2afe303e2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
