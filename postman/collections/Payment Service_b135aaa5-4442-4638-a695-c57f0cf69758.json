@@ -13,12 +13,12 @@
 					"listen": "test",
 					"script": {
 						"id": "3b7d5137-3511-449b-aa65-c4568a153ef8",
+						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -45,7 +45,6 @@
 					],
 					"variable": [
 						{
-							"id": "e928d864-e752-488c-a10e-1d9ba6a2999d",
 							"key": "property_id",
 							"value": "aliquip dolore aliqua minim",
 							"description": "(Required) The property id"
@@ -84,7 +83,8 @@
 					"header": [
 						{
 							"key": "Content-Type",
-							"value": "application/json"
+							"value": "application/json",
+							"enabled": true
 						}
 					],
 					"cookie": [],
@@ -121,7 +121,8 @@
 					"header": [
 						{
 							"key": "Content-Type",
-							"value": "text/plain"
+							"value": "text/plain",
+							"enabled": true
 						}
 					],
 					"cookie": [],
@@ -158,6 +159,107 @@
 					"header": [
 						{
 							"key": "Content-Type",
+							"value": "text/plain",
+							"enabled": true
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Gets all markets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0141edc6-4047-4837-985c-2d704aba701b",
+						"exec": [
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(100);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "cd0564a3-e078-4e70-b9a0-8fbfc51d7144",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/markets",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"markets"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "151f64f6-1c9b-43f0-8ef1-38c1ba415537",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/markets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"markets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"results\": [\n    {\n      \"id\": \"in \",\n      \"title\": \"ex exercitation velit\",\n      \"image_url\": \"ullamco esse\",\n      \"property_count\": 63639860,\n      \"map_location\": {\n        \"center\": {\n          \"latitude\": 53722592.001491785,\n          \"longitude\": -78002300.25149176\n        },\n        \"mobile_zoom_level\": -5936705\n      }\n    },\n    {\n      \"id\": \"laborum nisi\",\n      \"title\": \"qui laboris consectetur\",\n      \"image_url\": \"ut\",\n      \"property_count\": 65837600,\n      \"map_location\": {\n        \"center\": {\n          \"latitude\": 92708835.52777684,\n          \"longitude\": -39239812.9706355\n        },\n        \"mobile_zoom_level\": -53659594\n      }\n    }\n  ]\n}"
+				},
+				{
+					"id": "3bd31aaf-bc96-4f2d-a4b8-dce71ef9aef4",
+					"name": "Bad request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/markets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"markets"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
 							"value": "text/plain"
 						}
 					],
@@ -172,7 +274,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "897a7db3-d113-42d4-8b87-ca6087559023",
+				"id": "9fd622fa-f34c-4ad2-a12a-1f9f232808d0",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -182,7 +284,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9f1dca40-33aa-4b92-ada0-97c4c03f262e",
+				"id": "504165ed-f47f-420e-b905-d8445866112b",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -192,10 +294,9 @@
 	],
 	"variable": [
 		{
-			"id": "938eefe8-0c71-458a-be68-a1aaf675b191",
+			"id": "975f1816-0173-4042-9bb3-422a6a60d4a8",
 			"key": "baseUrl",
-			"value": "https://c21443bf-69df-4258-97a4-29fecc70cf97.mock.pstmn.io",
-			"type": "string"
+			"value": "https://ce7c9e9f-241a-4928-a8b5-3698b44283f6.mock.pstmn.io"
 		}
 	]
 }
