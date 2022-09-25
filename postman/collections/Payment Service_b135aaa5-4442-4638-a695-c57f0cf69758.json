@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "84a551ce-4c81-403d-b30d-85a03c584851",
+		"name": "Payment Service",
+		"description": "API for managing properties",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gets property details by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b7d5137-3511-449b-aa65-c4568a153ef8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "7a6a3b39-c896-452e-bd2a-c21e86178639",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/properties/:property_id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"properties",
+						":property_id"
+					],
+					"variable": [
+						{
+							"id": "e928d864-e752-488c-a10e-1d9ba6a2999d",
+							"key": "property_id",
+							"value": "aliquip dolore aliqua minim",
+							"description": "(Required) The property id"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "f6f2fa69-1e9e-4da7-a64f-b68378c4ea85",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/properties/:property_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"properties",
+								":property_id"
+							],
+							"variable": [
+								{
+									"key": "property_id",
+									"value": "aliquip dolore aliqua minim",
+									"description": "(Required) The property id"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"id\": \"consectetur Ut ea\",\n  \"slug\": \"enim nisi officia in non\",\n  \"pu_code\": \"non Duis officia et\",\n  \"unit_id\": 20556264,\n  \"beds\": -57811899,\n  \"baths\": 34973994,\n  \"square_footage\": -91167458,\n  \"has_floorplan\": false,\n  \"market_id\": \"nisi nulla consequat consectetur sint\",\n  \"market_name\": \"ut fugiat repreh\",\n  \"office_id\": \"labore consectetur id\",\n  \"community_id\": \"nulla in dolore pariatur\",\n  \"map_location\": {\n    \"center\": {\n      \"latitude\": -77811582.58232984,\n      \"longitude\": -69757100.19684444\n    },\n    \"mobile_zoom_level\": 30139522\n  },\n  \"address\": {\n    \"address_1\": \"in commodo magna\",\n    \"address_2\": \"quis minim\",\n    \"city\": \"voluptate culpa magna amet cupid\",\n    \"state\": \"esse dolore incididunt adipisi\",\n    \"zip_code\": \"voluptate dolore laborum\"\n  },\n  \"active_listing\": {\n    \"title\": \"Duis ut\",\n    \"description\": \"consecte\",\n    \"is_active\": false,\n    \"status\": \"unavailable\",\n    \"is_exclusive\": true,\n    \"is_on_special\": false,\n    \"is_available_for_tour\": true,\n    \"is_self_show_enabled\": false,\n    \"is_application_enabled\": false,\n    \"application_url\": \"aliquip eiusmod tempor non\",\n    \"available_on\": \"2022-04-07T18:00:00.000Z\",\n    \"disclaimer\": \"nulla laborum aliqua ipsum\",\n    \"monthly_rent\": -59175520.252229095,\n    \"virtual_tour_url\": \"cillum fugiat in magna\",\n    \"virtual_tour_url_mobile\": \"in ad dolor dolor aliqua\",\n    \"self_show_url\": \"quis magna incididun\"\n  },\n  \"photos\": [\n    {\n      \"id\": \"adipisicing aliquip ex Excepteur\",\n      \"image_url\": \"voluptate ullamco\",\n      \"thumbnail_url\": \"cillum culpa elit qui\",\n      \"caption\": \"tempor fugiat magna aute\",\n      \"type\": \"tourStock\"\n    },\n    {\n      \"id\": \"exercitation\",\n      \"image_url\": \"pariatur veniam\",\n      \"thumbnail_url\": \"cupidatat aute et nisi culpa\",\n      \"caption\": \"tempor cillum in deserunt\",\n      \"type\": \"tour-direct\"\n    }\n  ],\n  \"amenities\": [\n    {\n      \"id\": \"sit\",\n      \"title\": \"sint commodo sunt\",\n      \"description\": \"sed qui ut anim\"\n    },\n    {\n      \"id\": \"reprehenderit aliqua dolore\",\n      \"title\": \"in\",\n      \"description\": \"commodo\"\n    }\n  ],\n  \"schools\": [\n    {\n      \"name\": \"ad do\",\n      \"grade_level_desc\": \"fugiat labore culpa\",\n      \"grade_levels\": [\n        \"si\",\n        \"laboris ipsum et qui\"\n      ],\n      \"detail_url\": \"cupidatat sed dolo\"\n    },\n    {\n      \"name\": \"ullamco in tempor veniam officia\",\n      \"grade_level_desc\": \"officia amet aliquip\",\n      \"grade_levels\": [\n        \"ut qui est Excepteur ut\",\n        \"elit anim et\"\n      ],\n      \"detail_url\": \"sed ipsum cillum ad\"\n    }\n  ]\n}"
+				},
+				{
+					"id": "6283b27d-6594-48ad-b270-a4f77dd80792",
+					"name": "Bad request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/properties/:property_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"properties",
+								":property_id"
+							],
+							"variable": [
+								{
+									"key": "property_id",
+									"value": "aliquip dolore aliqua minim",
+									"description": "(Required) The property id"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": ""
+				},
+				{
+					"id": "931a4257-0e4f-497d-a63a-e6a29ef9dbf2",
+					"name": "Property not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/properties/:property_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"properties",
+								":property_id"
+							],
+							"variable": [
+								{
+									"key": "property_id",
+									"value": "aliquip dolore aliqua minim",
+									"description": "(Required) The property id"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "897a7db3-d113-42d4-8b87-ca6087559023",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9f1dca40-33aa-4b92-ada0-97c4c03f262e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "938eefe8-0c71-458a-be68-a1aaf675b191",
+			"key": "baseUrl",
+			"value": "https://c21443bf-69df-4258-97a4-29fecc70cf97.mock.pstmn.io",
+			"type": "string"
+		}
+	]
+}

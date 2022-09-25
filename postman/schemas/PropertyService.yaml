@@ -1,0 +1,292 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Property Service
+  description: "API for managing properties"
+components:
+  schemas:
+    GetPropertiesResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Property"
+    GetMarketResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Market"
+    Market: 
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        image_url:
+          type: string
+        property_count:
+          type: integer
+        map_location:
+          $ref: "#/components/schemas/MapLocation"
+    Address:
+      type: object
+      properties:
+        address_1:
+          type: string
+        address_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+    Listing:
+      type: object
+      properties:
+        title: 
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
+        status:
+          type: string
+          enum: [on-the-market, pre-lease, unavailable]
+        is_exclusive:
+          type: boolean
+        is_on_special:
+          type: boolean
+        is_available_for_tour:
+          type: boolean
+        is_self_show_enabled:
+          type: boolean
+        is_application_enabled:
+          type: boolean
+        application_url:
+          type: string
+        available_on:
+          type: string
+          format: date-time
+          example: "2022-04-07T18:00:00.000Z"
+        disclaimer:
+          type: string
+        monthly_rent:
+          type: number
+        virtual_tour_url:
+          type: string
+        virtual_tour_url_mobile:
+          type: string
+        self_show_url:
+          type: string
+    Photo:
+      type: object
+      properties:
+        id:
+          type: string
+        image_url:
+          type: string
+        thumbnail_url:
+          type: string
+        caption: 
+          type: string
+        type:
+          type: string
+          enum: [property, floorplan, tour-direct, tour-embedded, photo, tourStock]
+    Office:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        address:
+          $ref: "#/components/schemas/Address"
+        phone:
+          type: string
+        email:
+          type: string
+    Amenity:
+      type: object
+      properties:
+        id: 
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+    School:
+      type: object
+      properties:
+        name:
+          type: string
+        grade_level_desc:
+          type: string
+        grade_levels:
+          type: array
+          items:
+            type: string 
+        detail_url:
+          type: string
+    MapLocation:
+      type: object
+      properties:
+        center:
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+        mobile_zoom_level:
+          type: integer
+    Community:
+      type: object
+      properties:
+        id:
+          type: string
+        amenities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Amenity"
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+        slug:
+          type: string
+        pu_code:
+          type: string
+        market_name:
+          type: string
+        beds:
+          type: integer
+        baths:
+          type: integer
+        square_footage:
+          type: integer
+        photos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Photo"
+        map_location:
+          $ref: "#/components/schemas/MapLocation"
+        address:
+          $ref: "#/components/schemas/Address"
+        active_listing:
+          $ref: "#/components/schemas/Listing"
+    PropertyDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        slug:
+          type: string
+        pu_code:
+          type: string
+        unit_id:
+          type: integer
+        beds:
+          type: integer
+        baths:
+          type: integer
+        square_footage:
+          type: integer
+        has_floorplan: 
+          type: boolean
+        market_id:
+          type: string
+        market_name:
+          type: string
+        office_id:
+          type: string
+        community_id:
+          type: string
+        map_location:
+          $ref: "#/components/schemas/MapLocation"
+        address:
+          $ref: "#/components/schemas/Address"
+        active_listing:
+          $ref: "#/components/schemas/Listing"
+        photos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Photo"
+        amenities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Amenity"
+        schools:
+          type: array
+          items:
+            $ref: "#/components/schemas/School"
+  parameters:
+    property_id:
+      name: property_id
+      in: path
+      required: true
+      description: "The property id"
+      schema:
+        type: string
+    property_ids:
+      name: id
+      explode: false
+      in: query
+      required: false
+      description: "The property ids"
+      schema:
+        type: array
+        items:
+          type: string
+    community_id:
+      name: community_id
+      in: path
+      required: true
+      description: "The community id"
+      schema:
+        type: string
+    pu_codes:
+      name: pu_code
+      explode: false
+      in: query
+      required: false
+      description: "The puCodes"
+      schema:
+        type: array
+        items:
+          type: string
+paths:
+  /properties/{property_id}:
+    get:
+      summary: Gets property details by id
+      tags:
+        - Property
+      parameters:
+        - $ref: "#/components/parameters/property_id"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PropertyDetail"
+        "400":
+          description: "Bad request"
+        "404":
+          description: "Property not found"
+
+servers:
+  - description: MOCK
+    url: https://property-api.mockinvh.com/v1
+  - description: DEV
+    url: https://property-api.devinvh.com/v1
+  - description: QA
+    url: https://property-api.qainvh.com/v1
+  - description: UAT
+    url: https://property-api.uatinvh.com/v1
+  - description: PROD
+    url: https://property-api.invitationhomes.com/v1
