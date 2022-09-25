@@ -278,20 +278,7 @@ paths:
           description: "Bad request"
         "404":
           description: "Property not found"
-  /markets:
-      get:
-        summary: Gets all markets
-        tags:
-          - Market
-        responses:
-          "200":
-            description: "OK"
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/GetMarketResponse"
-          "400":
-            description: "Bad request"
+          
 servers:
   - description: DEV
     url: https://property-api.devinvh.com/v1
